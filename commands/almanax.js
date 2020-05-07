@@ -23,11 +23,11 @@ module.exports = {
         const embed = new MessageEmbed()
           .setColor('#0099ff')
           .setTitle(current_date[0].toUpperCase() + current_date.slice(1))
-          .setDescription(current_almanax.quest)
+          .setDescription(current_almanax.offering)
           .setThumbnail(picture_url.replace('$item', current_almanax.objectID))
-          .addField('Bonus', current_almanax.bonus)
+          .addField(current_almanax.bonusTitle, current_almanax.bonusDescription)
           .setTimestamp()
-          .setFooter('Pandisbot');
+          .setFooter('Pandisbot',);
         msg.channel.send(embed);
       }
       else {
