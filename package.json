@@ -1,15 +1,24 @@
 {
-  "name": "discord-bot",
+  "name": "Pandisbot",
   "version": "1.0.0",
-  "description": "Discord bot for SitePoint",
+  "description": "Discord bot",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon app.js",
+    "log": "echo \"Logging something to screen\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Michiel Mulders",
+  "keywords": [
+    "Discord",
+    "Bot"
+  ],
+  "author": "Julien G.",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^11.5.1",
+    "discord.js": "^12.2.0",
     "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }
