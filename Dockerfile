@@ -8,7 +8,7 @@ COPY . .
 
 ARG TOKEN
 
-ENV TOKEN=$TOKEN
+ENV TOKEN $TOKEN
 
 RUN npm install
 
