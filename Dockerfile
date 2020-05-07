@@ -2,13 +2,13 @@
 
 FROM node:latest
 
+ARG TOKEN_DISCORD
+
+ENV TOKEN $TOKEN_DISCORD
+
 WORKDIR /app
 
 COPY . .
-
-ARG TOKEN
-
-ENV TOKEN $TOKEN
 
 RUN npm install
 
