@@ -3,7 +3,7 @@
 const fs = require('fs');
 const { MessageEmbed } = require('discord.js');
 const picture_url = 'http://staticns.ankama.com/dofus/www/game/items/200/$item.png';
-const date_options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'Europe/Paris' };
+const date_options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
 module.exports = {
   name: '!almanax',
@@ -12,7 +12,7 @@ module.exports = {
     fs.readFile('./utils/almanax.json', (err, data) => {
       if (err) throw err;
       let alamanax = JSON.parse(data);
-      
+
       let today = new Date();
       let current_date = today.toLocaleDateString('fr-FR', date_options);
       let dd = String(today.getDate()).padStart(2, '0');
@@ -27,7 +27,7 @@ module.exports = {
           .setThumbnail(picture_url.replace('$item', current_almanax.objectID))
           .addField(current_almanax.bonusTitle, current_almanax.bonusDescription)
           .setTimestamp()
-          .setFooter('Pandisbot',);
+          .setFooter('Pandisbot');
         msg.channel.send(embed);
       }
       else {
