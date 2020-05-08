@@ -6,12 +6,13 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 bot.commands = new Discord.Collection();
 const botCommands = require('./commands');
+const { Utils, CronJobs } = require('./utils');
 
 Object.keys(botCommands).map(key => {
   bot.commands.set(botCommands[key].name, botCommands[key]);
 });
 
-const TOKEN = process.env.TOKEN;
+const TOKEN = 'NzA3OTk4NDAyNTgzMTk5Nzc1.XrRvug.xnKiCaZzh87dXYrotTLioV7mC1Y';
 
 bot.login(TOKEN).catch(err => {
   console.log("Token " + TOKEN + " invalid.");
@@ -19,12 +20,14 @@ bot.login(TOKEN).catch(err => {
 
 bot.on('ready', () => {
   console.info(`Logged in as ${bot.user.tag}!`);
+
+  const launchAlmanax = () => bot.commands.get('!almanax').execute(Utils.getChannel(bot, 'dofus'), '');
+  CronJobs.scheduleCronEveryDay(0, 0, 0, launchAlmanax);
 });
 
 bot.on('message', msg => {
   const args = msg.content.split(/ +/);
   const command = args.shift().toLowerCase();
-  console.info(`Called command: ${command}`);
 
   if (!bot.commands.has(command)) return;
 
