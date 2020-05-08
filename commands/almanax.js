@@ -22,7 +22,7 @@ module.exports = {
       if (current_almanax) {
         const embed = new MessageEmbed()
           .setColor('#0099ff')
-          .setTitle(current_date[0].toUpperCase() + current_date.slice(1))
+          .setTitle(current_date[0].toUpperCase() + current_date.slice(1) + today)
           .setDescription(current_almanax.offering)
           .setThumbnail(picture_url.replace('$item', current_almanax.objectID))
           .addField(current_almanax.bonusTitle, current_almanax.bonusDescription)
