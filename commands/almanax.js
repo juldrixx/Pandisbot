@@ -3,7 +3,7 @@
 const fs = require('fs');
 const { MessageEmbed } = require('discord.js');
 const picture_url = 'http://staticns.ankama.com/dofus/www/game/items/200/$item.png';
-const date_options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+const date_options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'Europe/Paris' };
 
 module.exports = {
   name: '!almanax',
