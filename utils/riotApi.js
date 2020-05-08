@@ -4,7 +4,7 @@ require('dotenv').config();
 const fetch = require('node-fetch');
 
 const url_api = 'https://euw1.api.riotgames.com/';
-const API_KEY = 'RGAPI-67893d5b-7809-4c62-8faf-86c2d35f6c91'; // process.env.API_KEY_RIOT;
+const API_KEY = process.env.API_KEY_RIOT;
 
 const url_ddragon_version = 'https://ddragon.leagueoflegends.com/api/versions.json';
 const url_ddragon = 'http://ddragon.leagueoflegends.com/cdn/';

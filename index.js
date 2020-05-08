@@ -12,7 +12,7 @@ Object.keys(botCommands).map(key => {
   bot.commands.set(botCommands[key].name, botCommands[key]);
 });
 
-const TOKEN = 'NzA3OTk4NDAyNTgzMTk5Nzc1.XrVVUQ.OL9271K8yy1UaLIVIsWH4wNCoxE'; //process.env.TOKEN;
+const TOKEN = process.env.TOKEN;
 
 bot.login(TOKEN).catch(err => {
   console.log("Token " + TOKEN + " invalid.");
