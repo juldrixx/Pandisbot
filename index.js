@@ -22,8 +22,8 @@ bot.on('ready', () => {
   console.info(`Logged in as ${bot.user.tag}!`);
 
   RiotApi.getChampionThumbnail('10.9.318.9', '45');
-  //const launchAlmanax = () => bot.commands.get('!almanax').execute(Utils.getChannel(bot, 'dofus-almanax'), '');
-  //CronJobs.scheduleCronEveryDay(0, 0, 0, launchAlmanax);
+  const launchAlmanax = () => bot.commands.get('!almanax').execute(Utils.getChannel(bot, 'dofus-almanax'), '');
+  CronJobs.scheduleCronEveryDay(0, 0, 0, launchAlmanax);
 });
 
 bot.on('message', msg => {
