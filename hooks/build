@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t $IMAGE_NAME --build-arg TOKEN_DISCORD=$TOKEN_DISCORD .
+docker build -t $IMAGE_NAME --build-arg TOKEN_DISCORD=$TOKEN_DISCORD API_KEY_RIOT=$API_KEY_RIOT .
