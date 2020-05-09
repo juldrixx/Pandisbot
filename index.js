@@ -21,9 +21,22 @@ bot.login(TOKEN).catch(err => {
 bot.on('ready', () => {
   console.info(`Logged in as ${bot.user.tag}!`);
 
-  RiotApi.getChampionThumbnail('10.9.318.9', '45');
-  const launchAlmanax = () => bot.commands.get('!almanax').execute(Utils.getChannel(bot, 'dofus-almanax'), '');
+  const launchAlmanax = () => bot.commands.get('!almanax').execute(Utils.getChannel(bot, 'dofus-almanax'), []);
   CronJobs.scheduleCronEveryDay(0, 0, 0, launchAlmanax);
+
+  const launchTracking = () => {
+    Utils.getLolTrackedPlayer().then((trackedPlayers) => {
+      trackedPlayers.forEach(playerName =>{
+        Utils.isLolNewLastGame(playerName).then(r => {
+          Utils.updateLolLastGameTrackedPlayer(playerName, r).then(() => {
+            bot.commands.get('!lol_last_game').execute(Utils.getChannel(bot, 'league-of-legends'), [playerName])
+          }).catch(() => {});
+        })
+        .catch(() => {});
+      });
+    });
+  };
+  CronJobs.scheduleCronEveryXSeconds(5, launchTracking);
 });
 
 bot.on('message', msg => {

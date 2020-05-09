@@ -15,4 +15,4 @@ COPY . .
 
 RUN npm install
 
-ENTRYPOINT ["npm", "start"]
+ENTRYPOINT ["node", "--icu-data-dir=node_modules\\full-icu", "index.js"]
