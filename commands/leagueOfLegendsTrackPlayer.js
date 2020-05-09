@@ -8,19 +8,25 @@ module.exports = {
   description: 'Tracker player result!',
   execute(msg, args) {
     Utils.getLolTrackedPlayer().then(trackedPlayer => {
+      let newTrackedPlayer = [];
       args.forEach(playerName => {
         if (!trackedPlayer.includes(playerName)) {
           trackedPlayer.push(playerName);
+          newTrackedPlayer.push(playerName);
         }
         else {
+          trackedPlayer
           msg.channel.send(`Le joueur ${playerName} est déjà tracké.`);
         }
       });
       Utils.writeLolTrackerPlayer(trackedPlayer)
         .then(() => {
-          msg.channel.send(`Le joueur ${playerName} est maintenant tracké.`);
+          newTrackedPlayer.forEach(playerName => {
+            msg.channel.send(`Le joueur ${playerName} est maintenant tracké.`);
+          });
         })
-        .catch(() => {
+        .catch((err) => {
+          console.log(err);
           msg.channel.send(`Un erreur s'est produite.`);
         });
     })
