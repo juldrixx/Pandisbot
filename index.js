@@ -22,7 +22,7 @@ bot.on('ready', () => {
   console.info(`Logged in as ${bot.user.tag}!`);
 
   const launchAlmanax = () => bot.commands.get('!almanax').execute(Utils.getChannel(bot, 'dofus-almanax'), []);
-  CronJobs.scheduleCronEveryDay(0, 0, 0, launchAlmanax);
+  CronJobs.scheduleCronEveryDayAt(0, 0, 0, launchAlmanax);
 
   const launchTracking = () => {
     Utils.getLolTrackedPlayer().then((trackedPlayers) => {
