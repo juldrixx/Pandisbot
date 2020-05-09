@@ -36,7 +36,7 @@ bot.on('ready', () => {
       });
     });
   };
-  CronJobs.scheduleCronEveryXSeconds(5, launchTracking);
+  CronJobs.scheduleCronEveryXSeconds(10, launchTracking);
 });
 
 bot.on('message', msg => {
