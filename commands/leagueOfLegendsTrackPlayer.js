@@ -7,22 +7,22 @@ module.exports = {
   name: '!lol_track_player',
   description: 'Tracker player result!',
   execute(msg, args) {
-    args.forEach(playerName => {
-      Utils.getLolTrackedPlayer().then(trackedPlayer => {
+    Utils.getLolTrackedPlayer().then(trackedPlayer => {
+      args.forEach(playerName => {
         if (!trackedPlayer.includes(playerName)) {
           trackedPlayer.push(playerName);
-          Utils.writeLolTrackerPlayer(trackedPlayer)
-            .then(() => {
-              msg.channel.send(`Le joueur ${playerName} est maintenant tracké.`);
-            })
-            .catch(() => {
-              msg.channel.send(`Un erreur s'est produite.`);
-            });
         }
         else {
           msg.channel.send(`Le joueur ${playerName} est déjà tracké.`);
         }
-      })
-    });
+      });
+      Utils.writeLolTrackerPlayer(trackedPlayer)
+        .then(() => {
+          msg.channel.send(`Le joueur ${playerName} est maintenant tracké.`);
+        })
+        .catch(() => {
+          msg.channel.send(`Un erreur s'est produite.`);
+        });
+    })
   },
 };
