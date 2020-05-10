@@ -911,10 +911,10 @@
     },
     "05-10": {
         "name": "Loumi",
-        "offering": "1 Sac du Petit Récolteur",
+        "offering": "3 Pelle de Boisaille",
         "bonusTitle": "Bonus : Élevage de Dragodindes",
         "bonusDescription": "Toutes les variétés de Dragodindes Turquoise donnent naissance à un bébé supplémentaire.",
-        "objectID": "81026"
+        "objectID": "8001"
     },
     "05-11": {
         "name": "Duanaf",
