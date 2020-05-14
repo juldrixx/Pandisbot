@@ -15,6 +15,7 @@ module.exports = {
             .setTitle(`${gameInfo.resultMatch ? 'Victoire' : 'Défaite'} pour ${playerName} !`)
             .setDescription(`Score : ${gameInfo.scoreMatch}`)
             .setThumbnail(gameInfo.championImg)
+            .addField(`Type de partie : ${gameInfo.gameType === 'MATCHED_GAME' ? 'Classée' : 'Normal'}`)
             .setTimestamp()
             .setFooter('Pandisbot');
           msg.channel.send(embed);

@@ -82,6 +82,7 @@ function getLolLastGameInfo(playerName) {
             RiotApi.getMatch(lastMatchId)
               .then((match) => {
                 const gameVersion = match.gameVersion;
+                const gameType = math.gameType;
                 const resultMatch = getResultMatchLol(accountId, match);
                 const scoreMatch = getScoreMatchLol(accountId, match);
                 RiotApi.getChampionThumbnail(gameVersion, championId)
@@ -89,7 +90,8 @@ function getLolLastGameInfo(playerName) {
                     resolve({
                       resultMatch,
                       scoreMatch,
-                      championImg
+                      championImg,
+                      gameType
                     });
                   })
                   .catch((e) => reject(e));
@@ -143,6 +145,15 @@ function updateLolLastGameTrackedPlayer(playerName, gameId) {
   });
 }
 
+function getRankInfoTrackedPlayer() {
+  return new Promise((resolve, _) => {
+    fs.readFile(`${tmp_directory}/rankInfoTrackedPlayer.json`, (err, data) => {
+      if (err) data = "{}";
+      resolve(JSON.parse(data));
+    });
+  });
+}
+
 module.exports = {
   getChannel,
   getResultMatchLol,
@@ -156,4 +167,5 @@ module.exports = {
   getLolLastGameTrackedPlayer,
   isLolNewLastGame,
   updateLolLastGameTrackedPlayer,
+  getRankInfoTrackedPlayer,
 }
