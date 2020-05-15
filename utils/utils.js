@@ -237,7 +237,7 @@ function getRankedQueueUpdates(encryptedSummonerId, queueId) {
 
               rankInfoTrackedPlayers[encryptedSummonerId][queueType] = info;
             }
-            updateRankInfoTrackedPlayer(rankInfoTrackedPlayers).then(_ => resolve(whatIsUpdate)).catch(err => reject(err))
+            updateRankInfoTrackedPlayer(rankInfoTrackedPlayers).then(_ => resolve(whatIsUpdate)).catch(err => reject(err));
           })
           .catch((e) => reject(e));
       })
@@ -258,6 +258,46 @@ function getQueueType(queueId) {
   return queueMappingLol[queueId];
 }
 
+function initRankInfoTrackedPlayer() {
+  return new Promise((resolve, reject) => {
+    getRankInfoTrackedPlayer()
+      .then(rankInfoTrackedPlayers => {
+        getLolTrackedPlayer().then((trackedPlayers) => {
+          trackedPlayers.forEach(playerName => {
+            getLolSummoner(playerName)
+              .then((summoner) => {
+                const encryptedSummonerId = summoner.id;
+                RiotApi.getRankInfo(encryptedSummonerId)
+                  .then((rankInfos) => {
+                    rankInfos.forEach(rankInfo => {
+                      const info = {
+                        tier: rankInfo.tier,
+                        rank: rankInfo.rank,
+                        leaguePoints: rankInfo.leaguePoints,
+                        wins: rankInfo.wins,
+                        losses: rankInfo.losses,
+                        miniSeries: rankInfo.miniSeries,
+                      };
+
+                      if (!rankInfoTrackedPlayers[encryptedSummonerId]) {
+                        rankInfoTrackedPlayers[encryptedSummonerId] = {};
+                      }
+                      if (!rankInfoTrackedPlayers[encryptedSummonerId][rankInfo.queueType]) {
+                        rankInfoTrackedPlayers[encryptedSummonerId][rankInfo.queueType] = info;
+                      }
+                    });
+                    updateRankInfoTrackedPlayer(rankInfoTrackedPlayers).then(_ => resolve(rankInfoTrackedPlayers)).catch(err => reject(err))
+                  })
+                  .catch((e) => reject(e));
+              })
+              .catch((e) => reject(e));
+          });
+        });
+      })
+      .catch((e) => reject(e));
+  });
+}
+
 module.exports = {
   getChannel,
   getResultMatchLol,
@@ -275,4 +315,5 @@ module.exports = {
   getRankedQueueUpdates,
   updateRankInfoTrackedPlayer,
   getQueueType,
+  initRankInfoTrackedPlayer,
 }

@@ -24,6 +24,7 @@ module.exports = {
           newTrackedPlayer.forEach(playerName => {
             msg.channel.send(`Le joueur ${playerName} est maintenant tracké.`);
           });
+          Utils.initRankInfoTrackedPlayer().then(_ => { }).catch(err => console.log(err));
         })
         .catch((err) => {
           msg.channel.send(`Un erreur s'est produite.`);

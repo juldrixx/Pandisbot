@@ -26,17 +26,19 @@ bot.on('ready', () => {
 
   const launchTracking = () => {
     Utils.getLolTrackedPlayer().then((trackedPlayers) => {
-      trackedPlayers.forEach(playerName =>{
+      trackedPlayers.forEach(playerName => {
         Utils.isLolNewLastGame(playerName).then(r => {
           Utils.updateLolLastGameTrackedPlayer(playerName, r).then(() => {
             bot.commands.get('!lol_last_game').execute(Utils.getChannel(bot, 'league-of-legends'), [playerName])
-          }).catch(() => {});
+          }).catch(_ => ());
         })
-        .catch(() => {});
+          .catch(_ => ());
       });
     });
   };
   CronJobs.scheduleCronEveryXSeconds(30, launchTracking);
+
+  Utils.initRankInfoTrackedPlayer().then(_ => { }).catch(err => console.log(err));
 });
 
 bot.on('message', msg => {

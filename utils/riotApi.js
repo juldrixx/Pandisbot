@@ -9,7 +9,7 @@ const API_KEY = process.env.API_KEY_RIOT;
 const url_ddragon_version = 'https://ddragon.leagueoflegends.com/api/versions.json';
 const url_ddragon = 'http://ddragon.leagueoflegends.com/cdn/';
 
-const queue = 'http://static.developer.riotgames.com/docs/lol/queues.json';
+const queue_url = 'http://static.developer.riotgames.com/docs/lol/queues.json';
 
 module.exports = {
     getSummoner(accountName) {
@@ -98,7 +98,7 @@ module.exports = {
     },
     getQueueInfo(queueId) {
         return new Promise((resolve, reject) => {
-            fetch(`http://static.developer.riotgames.com/docs/lol/queues.json`)
+            fetch(queue_url)
                 .then((result) => result.json())
                 .then((queues) => {
                     resolve(queues.filter(queue => queue.queueId === queueId)[0]);
