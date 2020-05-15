@@ -30,9 +30,9 @@ bot.on('ready', () => {
         Utils.isLolNewLastGame(playerName).then(r => {
           Utils.updateLolLastGameTrackedPlayer(playerName, r).then(() => {
             bot.commands.get('!lol_last_game').execute(Utils.getChannel(bot, 'league-of-legends'), [playerName])
-          }).catch(_ => ());
+          }).catch(_ => {});
         })
-          .catch(_ => ());
+          .catch(_ => {});
       });
     });
   };
