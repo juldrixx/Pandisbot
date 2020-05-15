@@ -1,6 +1,7 @@
 'use strict';
 
 const config = require('../assets/config.json');
+const queueMappingLol = require('../assets/queueMappingLol.json');
 const fs = require('fs');
 const RiotApi = require('./riotApi');
 
@@ -51,11 +52,11 @@ function writeLolTrackerPlayer(trackedPlayer) {
   });
 }
 
-function getLolAccountId(playerName) {
+function getLolSummoner(playerName) {
   return new Promise((resolve, reject) => {
-    RiotApi.getAccountId(playerName)
-      .then((accountId) => {
-        resolve(accountId);
+    RiotApi.getSummoner(playerName)
+      .then((summoner) => {
+        resolve(summoner);
       })
       .catch((e) => reject(e));
   });
@@ -73,8 +74,10 @@ function getLolLastGame(accountId) {
 
 function getLolLastGameInfo(playerName) {
   return new Promise((resolve, reject) => {
-    getLolAccountId(playerName)
-      .then((accountId) => {
+    getLolSummoner(playerName)
+      .then((summoner) => {
+        const accountId = summoner.accountId;
+        const encryptedSummonerId = summoner.id;
         getLolLastGame(accountId)
           .then((match) => {
             const lastMatchId = match.gameId;
@@ -82,17 +85,26 @@ function getLolLastGameInfo(playerName) {
             RiotApi.getMatch(lastMatchId)
               .then((match) => {
                 const gameVersion = match.gameVersion;
-                const gameType = math.gameType;
+                const queueId = match.queueId;
                 const resultMatch = getResultMatchLol(accountId, match);
                 const scoreMatch = getScoreMatchLol(accountId, match);
-                RiotApi.getChampionThumbnail(gameVersion, championId)
-                  .then((championImg) => {
-                    resolve({
-                      resultMatch,
-                      scoreMatch,
-                      championImg,
-                      gameType
-                    });
+                RiotApi.getQueueInfo(queueId)
+                  .then((queueInfo) => {
+                    getRankedQueueUpdates(encryptedSummonerId, queueId)
+                      .then((whatIsUpdate) => {
+                        RiotApi.getChampionThumbnail(gameVersion, championId)
+                          .then((championImg) => {
+                            resolve({
+                              resultMatch,
+                              scoreMatch,
+                              championImg,
+                              queueInfo,
+                              whatIsUpdate
+                            });
+                          })
+                          .catch((e) => reject(e));
+                      })
+                      .catch((e) => reject(e));
                   })
                   .catch((e) => reject(e));
               })
@@ -117,8 +129,9 @@ function isLolNewLastGame(playerName) {
   return new Promise((resolve, reject) => {
     getLolLastGameTrackedPlayer()
       .then((lastGames) => {
-        getLolAccountId(playerName)
-          .then((accountId) => {
+        getLolSummoner(playerName)
+          .then((summoner) => {
+            const accountId = summoner.accountId;
             getLolLastGame(accountId)
               .then((match) => {
                 lastGames[playerName] != match.gameId ? resolve(match.gameId) : reject()
@@ -154,6 +167,97 @@ function getRankInfoTrackedPlayer() {
   });
 }
 
+function getRankedQueueUpdates(encryptedSummonerId, queueId) {
+  return new Promise((resolve, reject) => {
+    const queueType = getQueueType(queueId);
+    let whatIsUpdate = '-';
+
+    if (!queueType) return resolve(whatIsUpdate);
+    RiotApi.getRankInfo(encryptedSummonerId)
+      .then((rankInfos) => {
+        const rankInfo = rankInfos.filter(rankInfo => rankInfo.queueType === queueType)[0];
+        getRankInfoTrackedPlayer()
+          .then(rankInfoTrackedPlayers => {
+            const info = {
+              tier: rankInfo.tier,
+              rank: rankInfo.rank,
+              leaguePoints: rankInfo.leaguePoints,
+              wins: rankInfo.wins,
+              losses: rankInfo.losses,
+              miniSeries: rankInfo.miniSeries,
+            };
+
+            if (!rankInfoTrackedPlayers[encryptedSummonerId]) {
+              rankInfoTrackedPlayers[encryptedSummonerId] = {};
+            }
+
+            if (!rankInfoTrackedPlayers[encryptedSummonerId][queueType]) {
+              rankInfoTrackedPlayers[encryptedSummonerId][queueType] = info;
+            }
+            else {
+              const rankInfoTrackedPlayer = rankInfoTrackedPlayers[encryptedSummonerId][queueType];
+              const diff = info.leaguePoints - rankInfoTrackedPlayer.leaguePoints;
+
+              if (info.tier === rankInfoTrackedPlayer.tier && info.rank === rankInfoTrackedPlayer.rank) {
+                if (info.leaguePoints < 100) {
+                  if (rankInfoTrackedPlayer.leaguePoints < 100) {
+                    whatIsUpdate = `${diff >= 0 ? '+' : '-'}${Math.abs(diff)} LP`;
+                  }
+                  else {
+                    whatIsUpdate = `${diff >= 0 ? '+' : '-'}${Math.abs(diff)} LP - Échec du BO${rankInfoTrackedPlayer.miniSeries.target * 2 - 1}`;
+                  }
+                }
+                else {
+                  if (rankInfoTrackedPlayer.leaguePoints < 100) {
+                    whatIsUpdate = `${diff >= 0 ? '+' : '-'}${Math.abs(diff)} LP - Qualifié en BO${info.miniSeries.target * 2 - 1}`;
+                  }
+                  else {
+                    whatIsUpdate = `${info.miniSeries.progress.replace(/W/g, '✓').replace(/L/g, '✗').replace(/N/g, '.')}`;
+                  }
+                }
+              }
+              else {
+                if (info.leaguePoints < 100) {
+                  if (rankInfoTrackedPlayer.leaguePoints < 100) {
+                    whatIsUpdate = `Relégation en ${info.tier} ${info.rank} (${info.leaguePoints} LP)`;
+                  }
+                  else {
+                    whatIsUpdate = `Promotion en ${info.tier} ${info.rank} (${info.leaguePoints} LP)`;
+                  }
+                }
+                else {
+                  if (rankInfoTrackedPlayer.leaguePoints < 100) {
+                    whatIsUpdate = `Promotion en ${info.tier} ${info.rank} (${info.leaguePoints} LP)`;
+                  }
+                  else {
+                    whatIsUpdate = `Promotion en ${info.tier} ${info.rank} et Qualifié en BO${info.miniSeries.target * 2 - 1}`;
+                  }
+                }
+              }
+
+              rankInfoTrackedPlayers[encryptedSummonerId][queueType] = info;
+            }
+            updateRankInfoTrackedPlayer(rankInfoTrackedPlayers).then(_ => resolve(whatIsUpdate)).catch(err => reject(err))
+          })
+          .catch((e) => reject(e));
+      })
+      .catch((e) => reject(e));
+  });
+}
+
+function updateRankInfoTrackedPlayer(rankInfoTrackedPlayers) {
+  return new Promise((resolve, _) => {
+    fs.writeFile(`${tmp_directory}/rankInfoTrackedPlayer.json`, JSON.stringify(rankInfoTrackedPlayers), (err, data) => {
+      if (err) reject(err);
+      resolve(data);
+    });
+  });
+}
+
+function getQueueType(queueId) {
+  return queueMappingLol[queueId];
+}
+
 module.exports = {
   getChannel,
   getResultMatchLol,
@@ -161,11 +265,14 @@ module.exports = {
   getChampionThumbnail,
   getLolTrackedPlayer,
   writeLolTrackerPlayer,
-  getLolAccountId,
+  getLolSummoner,
   getLolLastGame,
   getLolLastGameInfo,
   getLolLastGameTrackedPlayer,
   isLolNewLastGame,
   updateLolLastGameTrackedPlayer,
   getRankInfoTrackedPlayer,
+  getRankedQueueUpdates,
+  updateRankInfoTrackedPlayer,
+  getQueueType,
 }

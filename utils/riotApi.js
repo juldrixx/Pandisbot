@@ -9,7 +9,21 @@ const API_KEY = process.env.API_KEY_RIOT;
 const url_ddragon_version = 'https://ddragon.leagueoflegends.com/api/versions.json';
 const url_ddragon = 'http://ddragon.leagueoflegends.com/cdn/';
 
+const queue = 'http://static.developer.riotgames.com/docs/lol/queues.json';
+
 module.exports = {
+    getSummoner(accountName) {
+        return new Promise((resolve, reject) => {
+            fetch(url_api + `lol/summoner/v4/summoners/by-name/${accountName}?api_key=${API_KEY}`)
+                .then((result) => result.json())
+                .then((result) => {
+                    resolve(result);
+                })
+                .catch((err) => {
+                    reject(err);
+                });
+        });
+    },    
     getAccountId(accountName) {
         return new Promise((resolve, reject) => {
             fetch(url_api + `lol/summoner/v4/summoners/by-name/${accountName}?api_key=${API_KEY}`)
@@ -80,6 +94,30 @@ module.exports = {
                     reject(err);
                 });
 
+        });
+    },
+    getQueueInfo(queueId) {
+        return new Promise((resolve, reject) => {
+            fetch(`http://static.developer.riotgames.com/docs/lol/queues.json`)
+                .then((result) => result.json())
+                .then((queues) => {
+                    resolve(queues.filter(queue => queue.queueId === queueId)[0]);
+                })
+                .catch((err) => {
+                    reject(err);
+                });
+        });
+    },
+    getRankInfo(encryptedSummonerId) {
+        return new Promise((resolve, reject) => {
+            fetch(url_api + `lol/league/v4/entries/by-summoner/${encryptedSummonerId}?api_key=${API_KEY}`)
+                .then((result) => result.json())
+                .then((result) => {
+                    resolve(result);
+                })
+                .catch((err) => {
+                    reject(err);
+                });
         });
     }
 }

@@ -26,7 +26,6 @@ module.exports = {
           });
         })
         .catch((err) => {
-          console.log(err);
           msg.channel.send(`Un erreur s'est produite.`);
         });
     })
