@@ -201,18 +201,18 @@ function getRankedQueueUpdates(encryptedSummonerId, queueId) {
               if (info.tier === rankInfoTrackedPlayer.tier && info.rank === rankInfoTrackedPlayer.rank) {
                 if (info.leaguePoints < 100) {
                   if (rankInfoTrackedPlayer.leaguePoints < 100) {
-                    whatIsUpdate = `${diff >= 0 ? '+' : '-'}${Math.abs(diff)} LP`;
+                    whatIsUpdate = `${diff >= 0 ? '+' : '-'}${Math.abs(diff)} LP (${info.tier} ${info.rank} ${info.leaguePoints})`;
                   }
                   else {
-                    whatIsUpdate = `${diff >= 0 ? '+' : '-'}${Math.abs(diff)} LP - Échec du BO${rankInfoTrackedPlayer.miniSeries.target * 2 - 1}`;
+                    whatIsUpdate = `${diff >= 0 ? '+' : '-'}${Math.abs(diff)} LP (${info.tier} ${info.rank} ${info.leaguePoints}) - Échec du BO${rankInfoTrackedPlayer.miniSeries.target * 2 - 1}`;
                   }
                 }
                 else {
                   if (rankInfoTrackedPlayer.leaguePoints < 100) {
-                    whatIsUpdate = `${diff >= 0 ? '+' : '-'}${Math.abs(diff)} LP - Qualifié en BO${info.miniSeries.target * 2 - 1}`;
+                    whatIsUpdate = `${diff >= 0 ? '+' : '-'}${Math.abs(diff)} LP (${info.tier} ${info.rank} ${info.leaguePoints}) - Qualifié en BO${info.miniSeries.target * 2 - 1}`;
                   }
                   else {
-                    whatIsUpdate = `${info.miniSeries.progress.replace(/W/g, '✓').replace(/L/g, '✗').replace(/N/g, '.')}`;
+                    whatIsUpdate = `${info.miniSeries.progress.replace(/W/g, '✓').replace(/L/g, '✗').replace(/N/g, '.')} (${info.tier} ${info.rank} ${info.leaguePoints})`;
                   }
                 }
               }
