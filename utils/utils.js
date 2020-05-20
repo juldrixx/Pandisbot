@@ -212,7 +212,7 @@ function getRankedQueueUpdates(encryptedSummonerId, queueId) {
                     whatIsUpdate = `${diff >= 0 ? '+' : '-'}${Math.abs(diff)} LP (${info.tier} ${info.rank} - ${info.leaguePoints} LP) - Qualifié en BO${info.miniSeries.target * 2 - 1}`;
                   }
                   else {
-                    whatIsUpdate = `${info.miniSeries.progress.replace(/W/g, '✓').replace(/L/g, '✗').replace(/N/g, '.')} (${info.tier} ${info.rank} ${info.leaguePoints})`;
+                    whatIsUpdate = `${info.miniSeries.progress.replace(/W/g, '✓').replace(/L/g, '✗').replace(/N/g, '-')} (${info.tier} ${info.rank} ${info.leaguePoints})`;
                   }
                 }
               }
