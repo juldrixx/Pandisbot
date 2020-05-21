@@ -988,10 +988,10 @@
     },
     "05-21": {
         "name": "Ntamak",
-        "offering": "1 Cawotte",
-        "bonusTitle": "Bonus : Économie d'ingrédients",
-        "bonusDescription": "Les Tailleurs ont 10 % de chances d'économiser des ingrédients lorsqu'ils fabriquent des objets.",
-        "objectID": "68031"
+        "offering": "1 Sac du Petit Récolteur",
+        "bonusTitle": "Bonus : Gardiens de la nature",
+        "bonusDescription": "Les protecteurs de ressources ont 5 fois plus de chances d'apparaître pendant les activités de récolte.",
+        "objectID": "81026"
     },
     "05-22": {
         "name": "Krisegis",
