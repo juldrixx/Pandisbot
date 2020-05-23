@@ -176,6 +176,7 @@ function getRankedQueueUpdates(encryptedSummonerId, queueId) {
     RiotApi.getRankInfo(encryptedSummonerId)
       .then((rankInfos) => {
         const rankInfo = rankInfos.filter(rankInfo => rankInfo.queueType === queueType)[0];
+        if (!rankInfo) return resolve(whatIsUpdate);
         getRankInfoTrackedPlayer()
           .then(rankInfoTrackedPlayers => {
             const info = {
