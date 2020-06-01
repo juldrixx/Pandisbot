@@ -1065,10 +1065,10 @@
     },
     "06-01": {
         "name": "Namyknof",
-        "offering": "5 Pince du Crabe",
-        "bonusTitle": "Bonus : Challenge supplémentaire",
-        "bonusDescription": "Un challenge supplémentaire est généré contre les créatures de type Monstres des plages.",
-        "objectID": "47051"
+        "offering": "1 Cawotte",
+        "bonusTitle": "Bonus : Quête répétable",
+        "bonusDescription": "Une quête répétable spéciale est disponible aujourd'hui à l'est de l'atelier des bûcherons de la forêt d'Amakna. Réalisable à partir du niveau 20, elle est indépendante de la quête d'offrande.",
+        "objectID": "68031"
     },
     "06-02": {
         "name": "Elgero",
