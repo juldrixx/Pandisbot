@@ -14,7 +14,7 @@ const queue_url = 'http://static.developer.riotgames.com/docs/lol/queues.json';
 module.exports = {
     getSummoner(accountName) {
         return new Promise((resolve, reject) => {
-            fetch(url_api + `lol/summoner/v4/summoners/by-name/${accountName}?api_key=${API_KEY}`)
+            fetch(encodeURI(url_api + `lol/summoner/v4/summoners/by-name/${accountName}?api_key=${API_KEY}`))
                 .then((result) => result.json())
                 .then((result) => {
                     resolve(result);
@@ -26,7 +26,7 @@ module.exports = {
     },    
     getAccountId(accountName) {
         return new Promise((resolve, reject) => {
-            fetch(url_api + `lol/summoner/v4/summoners/by-name/${accountName}?api_key=${API_KEY}`)
+            fetch(encodeURI(url_api + `lol/summoner/v4/summoners/by-name/${accountName}?api_key=${API_KEY}`))
                 .then((result) => result.json())
                 .then((result) => {
                     resolve(result.accountId);
@@ -38,7 +38,7 @@ module.exports = {
     },
     getMatchList(accountId) {
         return new Promise((resolve, reject) => {
-            fetch(url_api + `lol/match/v4/matchlists/by-account/${accountId}?api_key=${API_KEY}`)
+            fetch(encodeURI(url_api + `lol/match/v4/matchlists/by-account/${accountId}?api_key=${API_KEY}`))
                 .then((result) => result.json())
                 .then((result) => {
                     resolve(result.matches);
@@ -50,7 +50,7 @@ module.exports = {
     },
     getMatch(gameId) {
         return new Promise((resolve, reject) => {
-            fetch(url_api + `lol/match/v4/matches/${gameId}?api_key=${API_KEY}`)
+            fetch(encodeURI(url_api + `lol/match/v4/matches/${gameId}?api_key=${API_KEY}`))
                 .then((result) => result.json())
                 .then((result) => {
                     resolve(result);
@@ -77,7 +77,7 @@ module.exports = {
                         version = versions[0];
                     }
 
-                    fetch(url_ddragon + `${version}/data/fr_FR/champion.json`)
+                    fetch(encodeURI(url_ddragon + `${version}/data/fr_FR/champion.json`))
                         .then((result) => result.json())
                         .then((champions) => {
                             const champion = Object.values(champions.data).filter((champion) => {
@@ -110,7 +110,7 @@ module.exports = {
     },
     getRankInfo(encryptedSummonerId) {
         return new Promise((resolve, reject) => {
-            fetch(url_api + `lol/league/v4/entries/by-summoner/${encryptedSummonerId}?api_key=${API_KEY}`)
+            fetch(encodeURI(url_api + `lol/league/v4/entries/by-summoner/${encryptedSummonerId}?api_key=${API_KEY}`))
                 .then((result) => result.json())
                 .then((result) => {
                     resolve(result);
