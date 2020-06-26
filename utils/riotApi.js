@@ -15,7 +15,10 @@ module.exports = {
   getSummoner(accountName) {
     return new Promise((resolve, reject) => {
       fetch(encodeURI(url_api + `lol/summoner/v4/summoners/by-name/${accountName}?api_key=${API_KEY}`))
-        .then((result) => result.json())
+        .then((result) => {
+          if (result.status >= 400) reject(result.statusText);
+          return result.json();
+        })
         .then((result) => {
           resolve(result);
         })
@@ -27,7 +30,10 @@ module.exports = {
   getAccountId(accountName) {
     return new Promise((resolve, reject) => {
       fetch(encodeURI(url_api + `lol/summoner/v4/summoners/by-name/${accountName}?api_key=${API_KEY}`))
-        .then((result) => result.json())
+        .then((result) => {
+          if (result.status >= 400) reject(result.statusText);
+          return result.json();
+        })
         .then((result) => {
           resolve(result.accountId);
         })
@@ -39,7 +45,10 @@ module.exports = {
   getMatchList(accountId) {
     return new Promise((resolve, reject) => {
       fetch(encodeURI(url_api + `lol/match/v4/matchlists/by-account/${accountId}?api_key=${API_KEY}`))
-        .then((result) => result.json())
+        .then((result) => {
+          if (result.status >= 400) reject(result.statusText);
+          return result.json();
+        })
         .then((result) => {
           resolve(result.matches);
         })
@@ -51,7 +60,10 @@ module.exports = {
   getMatch(gameId) {
     return new Promise((resolve, reject) => {
       fetch(encodeURI(url_api + `lol/match/v4/matches/${gameId}?api_key=${API_KEY}`))
-        .then((result) => result.json())
+        .then((result) => {
+          if (result.status >= 400) reject(result.statusText);
+          return result.json();
+        })
         .then((result) => {
           resolve(result);
         })
@@ -66,7 +78,10 @@ module.exports = {
       const version_inf = gameVersion.split('.')[1];
 
       fetch(url_ddragon_version)
-        .then((result) => result.json())
+        .then((result) => {
+          if (result.status >= 400) reject(result.statusText);
+          return result.json();
+        })
         .then((versions) => {
           let version = versions.filter(v => {
             const splits = v.split('.');
@@ -78,7 +93,10 @@ module.exports = {
           }
 
           fetch(encodeURI(url_ddragon + `${version}/data/fr_FR/champion.json`))
-            .then((result) => result.json())
+            .then((result) => {
+              if (result.status >= 400) reject(result.statusText);
+              return result.json();
+            })
             .then((champions) => {
               const champion = Object.values(champions.data).filter((champion) => {
                 return champion.key == championId;
@@ -99,7 +117,10 @@ module.exports = {
   getQueueInfo(queueId) {
     return new Promise((resolve, reject) => {
       fetch(queue_url)
-        .then((result) => result.json())
+        .then((result) => {
+          if (result.status >= 400) reject(result.statusText);
+          return result.json();
+        })
         .then((queues) => {
           resolve(queues.filter(queue => queue.queueId === queueId)[0]);
         })
@@ -111,7 +132,10 @@ module.exports = {
   getRankInfo(encryptedSummonerId) {
     return new Promise((resolve, reject) => {
       fetch(encodeURI(url_api + `lol/league/v4/entries/by-summoner/${encryptedSummonerId}?api_key=${API_KEY}`))
-        .then((result) => result.json())
+        .then((result) => {
+          if (result.status >= 400) reject(result.statusText);
+          return result.json();
+        })
         .then((result) => {
           resolve(result);
         })
