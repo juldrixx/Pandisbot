@@ -199,40 +199,38 @@ function getRankedQueueUpdates(encryptedSummonerId, queueId) {
               const rankInfoTrackedPlayer = rankInfoTrackedPlayers[encryptedSummonerId][queueType];
               const diff = info.leaguePoints - rankInfoTrackedPlayer.leaguePoints;
 
+              // Rang identique
               if (info.tier === rankInfoTrackedPlayer.tier && info.rank === rankInfoTrackedPlayer.rank) {
-                if (info.leaguePoints < 100) {
-                  if (rankInfoTrackedPlayer.leaguePoints < 100) {
-                    whatIsUpdate = `${diff >= 0 ? '+' : '-'}${Math.abs(diff)} LP (${info.tier} ${info.rank} - ${info.leaguePoints} LP)`;
-                  }
-                  else {
-                    whatIsUpdate = `${diff >= 0 ? '+' : '-'}${Math.abs(diff)} LP (${info.tier} ${info.rank} - ${info.leaguePoints} LP) - Échec du BO${rankInfoTrackedPlayer.miniSeries.target * 2 - 1}`;
-                  }
+                // Qualification en BO
+                if (info.miniSeries && !rankInfoTrackedPlayer.miniSeries) {
+                  whatIsUpdate = `${diff >= 0 ? '+' : '-'}${Math.abs(diff)} LP (${info.tier} ${info.rank} - ${info.leaguePoints} LP) - Qualifié en BO${info.miniSeries.target * 2 - 1}`;
                 }
+                // Echec du BO
+                else if (!info.miniSeries && rankInfoTrackedPlayer.miniSeries) {
+                  whatIsUpdate = `${diff >= 0 ? '+' : '-'}${Math.abs(diff)} LP (${info.tier} ${info.rank} - ${info.leaguePoints} LP) - Échec du BO${rankInfoTrackedPlayer.miniSeries.target * 2 - 1}`;
+                }
+                // Update du BO
+                else if (info.miniSeries && rankInfoTrackedPlayer.miniSeries) {
+                  whatIsUpdate = `${info.miniSeries.progress.replace(/W/g, '✓').replace(/L/g, '✗').replace(/N/g, '-')} (${info.tier} ${info.rank} ${info.leaguePoints})`;
+                }
+                // Pas de BO
                 else {
-                  if (rankInfoTrackedPlayer.leaguePoints < 100) {
-                    whatIsUpdate = `${diff >= 0 ? '+' : '-'}${Math.abs(diff)} LP (${info.tier} ${info.rank} - ${info.leaguePoints} LP) - Qualifié en BO${info.miniSeries.target * 2 - 1}`;
-                  }
-                  else {
-                    whatIsUpdate = `${info.miniSeries.progress.replace(/W/g, '✓').replace(/L/g, '✗').replace(/N/g, '-')} (${info.tier} ${info.rank} ${info.leaguePoints})`;
-                  }
+                  whatIsUpdate = `${diff >= 0 ? '+' : '-'}${Math.abs(diff)} LP (${info.tier} ${info.rank} - ${info.leaguePoints} LP)`;
                 }
               }
+              // Rang différent
               else {
-                if (info.leaguePoints < 100) {
-                  if (rankInfoTrackedPlayer.leaguePoints < 100) {
-                    whatIsUpdate = `Relégation en ${info.tier} ${info.rank} (${info.leaguePoints} LP)`;
-                  }
-                  else {
-                    whatIsUpdate = `Promotion en ${info.tier} ${info.rank} (${info.leaguePoints} LP)`;
-                  }
+                // BO Gagné
+                if (rankInfoTrackedPlayer.miniSeries && !info.miniSerie) {
+                  whatIsUpdate = `Promotion en ${info.tier} ${info.rank} (${info.leaguePoints} LP)`;
                 }
-                else {
-                  if (rankInfoTrackedPlayer.leaguePoints < 100) {
-                    whatIsUpdate = `Promotion en ${info.tier} ${info.rank} (${info.leaguePoints} LP)`;
-                  }
-                  else {
-                    whatIsUpdate = `Promotion en ${info.tier} ${info.rank} et Qualifié en BO${info.miniSeries.target * 2 - 1}`;
-                  }
+                // Division sauté
+                else if (info.leaguePoints === 0) {
+                  whatIsUpdate = `Promotion en ${info.tier} ${info.rank} (${info.leaguePoints} LP)`;
+                }
+                // Relégation
+                else if (info.leaguePoints > 0) {
+                  whatIsUpdate = `Relégation en ${info.tier} ${info.rank} (${info.leaguePoints} LP)`;
                 }
               }
 
