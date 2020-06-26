@@ -30,9 +30,9 @@ bot.on('ready', () => {
         Utils.isLolNewLastGame(playerName).then(r => {
           Utils.updateLolLastGameTrackedPlayer(playerName, r).then(() => {
             bot.commands.get('!lol_last_game').execute(Utils.getChannel(bot, 'league-of-legends'), [playerName])
-          }).catch(_ => {});
+          }).catch(_ => { });
         })
-          .catch(_ => {});
+          .catch(_ => { });
       });
     });
   };
@@ -50,8 +50,8 @@ bot.on('message', msg => {
   try {
     bot.commands.get(command).execute(msg, args);
   } catch (error) {
-    console.error(error);
+    console.error("Error: ", error);
     msg.reply('there was an error trying to execute that command!');
   }
-  msg.delete();
+  msg.delete({ timeout: 1000 });
 });
