@@ -1,7 +1,10 @@
 'use strict';
 
 module.exports = {
-  Utils: require('./utils.js'),
-  CronJobs: require('./cronJobs.js'),
-  RiotApi: require('./riotApi.js'),
+  FileManagerUtils: require('./fileManager'),
+  LeagueOfLegendsUtils: require('./LeagueOfLegends'),
+  DofusUtils: require('./Dofus'),
+  ConstantUtils: require('./Constants'),
+  DiscordUtils: require('./Discord'),
+  CronJobUtils: require('./cronJobs'),
 };
