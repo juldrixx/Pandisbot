@@ -4,6 +4,7 @@ const FileManagerUtils = require('../fileManager.js');
 const LeagueOfLegendsAPI = require('./api.js');
 const LeagueOfLegendsRank = require('./rank.js');
 const Constants = require('../Constants');
+const { setRankInfosLocal } = require('./rank.js');
 
 async function getLastGame(playerName) {
   const fileName = 'queueMappingLol.json';
@@ -134,7 +135,8 @@ async function setLastGameLocal(summonerId, lastGameId) {
 
 async function getUpdateFromLastGame(playerName) {
   const resultLastGame = await getLastGame(playerName);
-  const resultRankInfo = await LeagueOfLegendsRank.getRankInfo(playerName, resultLastGame.queueType);
+  const resultRankInfos = await LeagueOfLegendsRank.getRankInfos(playerName);
+  const resultRankInfo = resultRankInfos.filter(rankInfo => rankInfo.queueType === resultLastGame.queueType)[0];
 
   let queueChangement = '-';
   if (resultRankInfo) {
@@ -174,6 +176,9 @@ async function getUpdateFromLastGame(playerName) {
       queueChangement = `${resultRankInfo.tier} ${resultRankInfo.rank} - ${resultRankInfo.leaguePoints} LP`;
     }
   }
+
+  await setRankInfosLocal(resultLastGame.summonerId, resultRankInfos);
+  await setLastGameLocal(resultLastGame.summonerId, resultLastGame.gameId)
 
   return {
     stats: resultLastGame.stats,
