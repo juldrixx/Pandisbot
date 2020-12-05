@@ -61,7 +61,7 @@ async function trackPlayer(playerName) {
   }
 
   try {
-    await FileManagerUtils.writeTempFile(fileName, JSON.stringify(trackedPlayer));
+    await setTrackedPlayer(JSON.stringify(trackedPlayer));
     return `Le joueur **${playerName}** est maintenant suivi.`;
   }
   catch (e) {
