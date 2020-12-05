@@ -23,7 +23,7 @@ module.exports = {
 
     call().catch(err => {
       console.error(`Error: ${err}`);
-      msg.channel.send(`Une erreur s'est produite.`);
+      //msg.channel.send(`Une erreur s'est produite.`);
     });
   },
 };
