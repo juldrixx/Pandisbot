@@ -45,7 +45,7 @@
         },
         "team": "crewmate",
         "description": [
-            "L'Ingénieur est un **Crewmate** qui peut **réparer les sabotages** de n'**importe où** sur la carte.",
+            "L'Ingénieur est un **Crewmate** qui peut **réparer les sabotages** depuis n'**importe où** sur la carte.",
             "Il peut **utiliser les ventilations** pour traverser la carte facilement."
         ]
     },
@@ -81,7 +81,7 @@
             "Le Seigneur du Temps est un **Crewmate** qui peut **remonter le temps** et **inverser les positions de tous les joueurs**.",
             "S'il est activé, **tout joueur tué pendant ce temps sera ranimé**.",
             "Seuls les mouvements et les meurtres sont affectés.",
-            "S'il est activé, le Seigneur du Temps **ne peut pas utiliser les Vitaux** pour rendre les choses plus équilibrées."
+            "S'il est activé, le Seigneur du Temps **ne peut pas utiliser les Vitals** pour rendre les choses plus équilibrées."
         ]
     },
     "medic": {
@@ -128,9 +128,9 @@
         },
         "team": "crewmate",
         "description": [
-            "L'Espion est un **Crewmate** qui obtient **plus d'informations** lorsqu'il est **sur la Table d'administration et les Vitaux**.",
+            "L'Espion est un **Crewmate** qui obtient **plus d'informations** lorsqu'il est **sur la Table d'administration et les Vitals**.",
             "Sur la Table d'administration, l'espion peut **voir les couleurs de chaque personne** sur la carte.",
-            "Sur les Vitaux, l'espion peut voir **depuis combien de temps les corps sont morts**."
+            "Sur les Vitals, l'espion peut voir **depuis combien de temps les corps sont morts**."
         ]
     },
     "snitch": {
