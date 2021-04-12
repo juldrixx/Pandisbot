@@ -20,7 +20,7 @@
         "team": "crewmate",
         "description": [
             "Les Amoureux sont **deux joueurs** qui sont **liés entre eux**.",
-            "Ces deux joueurs sont **choisis au hasard** parmi les Crewmate et les Imposteurs.",
+            "Ces deux joueurs sont **choisis au hasard** parmi les Crewmates et les Imposteurs.",
             "Ils ont pour objectif principal de **rester en vie ensemble**.",
             "S'ils sont tous les deux **parmi les 3 derniers joueurs**, ils gagnent.",
             "Pour ce faire, ils ont **accès à un chat privé,** qu'ils ne peuvent voir **qu'entre les rencontres**.",
