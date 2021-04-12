@@ -105,7 +105,7 @@
         "team": "crewmate",
         "description": [
             "Le Voyant est un **Crewmate** qui peut **révéler les rôles des autres joueurs**.",
-            "En fonction des paramètres, le Voyant peut **découvrir si un rôle est bon, mauvais ou neutre**, ou il peut **découvrir le rôle lui-même*.",
+            "En fonction des paramètres, le Voyant peut **découvrir si un rôle est bon, mauvais ou neutre**, ou il peut **découvrir le rôle lui-même**.",
             "Le nom d'un joueur **change de couleur** en fonction de son équipe ou de son rôle.",
             "Si le Voyant enquête sur quelqu'un, le nom du Voyant **changera de couleur** pour **informer ce joueur de l'identité du Voyant**."
         ]
