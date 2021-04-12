@@ -105,7 +105,7 @@
         "team": "crewmate",
         "description": [
             "Le Voyant est un **Crewmate** qui peut **révéler les rôles des autres joueurs**.",
-            "En fonction des paramètres, le Voyant peut **découvrir si un rôle est bon, mauvais ou neutre**, ou il peut **découvrir le rôle lui-même**.",
+            "En fonction des paramètres, le Voyant peut découvrir si **un rôle est bon, mauvais ou neutre, ou le rôle lui-même**.",
             "Le nom d'un joueur **change de couleur** en fonction de son équipe ou de son rôle.",
             "Si le Voyant enquête sur quelqu'un, le nom du Voyant **changera de couleur** pour **informer ce joueur de l'identité du Voyant**."
         ]
@@ -141,9 +141,9 @@
         "team": "crewmate",
         "description": [
             "Le Mouchard est un **Crewmate** qui peut faire **pointer des flèches vers les imposteurs**, une fois que **toutes leurs tâches sont terminées**.",
-            "Les noms des imposteurs s'**affichent également en rouge** sur leur écran.",
+            "Les noms des imposteurs s'**affichent également en rouge** sur son écran.",
             "Selon les paramètres du jeu, le Mouchard peut **ne pas savoir qui il est** tant qu'il ne lui reste qu'une seule tâche à accomplir.",
-            "Cependant, lorsqu'il ne leur **reste plus qu'une seule tâche à accomplir**, les imposteurs reçoivent **une flèche pointant vers le Mouchard**."
+            "Cependant, lorsqu'il ne lui **reste plus qu'une seule tâche à accomplir**, les imposteurs reçoivent **une flèche pointant vers le Mouchard**."
         ]
     },
     "altruist": {
@@ -233,7 +233,7 @@
         "team": "impostor",
         "description": [
             "Le Concierge est un **Imposteur** qui peut **nettoyer les corps**.",
-            "Ses deux capacités, **tuer et nettoyer**, ont un temps de recharge commun, ce qui signifie qu'il doit choisir laquelle il veut utiliser."
+            "Ses deux capacités, **tuer** et **nettoyer**, ont un temps de recharge commun, ce qui signifie qu'il doit choisir laquelle il veut utiliser."
         ]
     },
     "morphling": {
@@ -279,7 +279,7 @@
         "team": "impostor",
         "description": [
             "Le Swooper est un **Imposteur** qui peut **temporairement devenir invisible**.",
-            "Pour équilibrer le rôle, ils **ne peuvent pas utiliser les ventilations**."
+            "Pour équilibrer le rôle, il **ne peut pas utiliser les ventilations**."
         ]
     }
 }
