@@ -23,7 +23,7 @@ Object.keys(botCommands).forEach(key => {
 const TOKEN = process.env.TOKEN_DISCORD;
 
 bot.login(TOKEN).catch(err => {
-  console.log("Token " + TOKEN + " invalid.");
+  console.log('Token ' + TOKEN + ' invalid.');
 });
 
 bot.on('ready', () => {
@@ -63,8 +63,15 @@ function processInput(msg, args, availableCommands, parentCommand = null) {
       .addFields(
         Array.from(availableCommands.keys()).map(key => {
           const command = availableCommands.get(key);
+          let args = command.arguments;
+          if (args && Array.isArray(args)) {
+            args = ` <${args[0]}_1> <${args[0]}_2> <${args[0]}_3> ...`;
+          }
+          else if (args) {
+            args = ` <${args}>`;
+          }
           return {
-            name: `${key} \`${parentCommand} ${key}\``,
+            name: `${key} \`${parentCommand} ${key}${args ?? ''}\``,
             value: command.description,
             inline: true
           };

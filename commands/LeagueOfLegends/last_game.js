@@ -6,12 +6,13 @@ const { LeagueOfLegendsUtils } = require('../../utils');
 module.exports = {
   name: 'last',
   description: 'Permet de récupérer le résultat du dernier match League Of Legends d\'un joueur',
+  arguments: 'player_name',
   execute(msg, args) {
     const playerName = args.join(' ');
 
     const call = async () => {
       const result = await LeagueOfLegendsUtils.getUpdateFromLastGame(playerName);
-      
+
       const embed = new MessageEmbed()
         .setColor(result.stats.win ? '#52a832' : '#a83a32')
         .setTitle(`${result.stats.win ? 'Victoire' : 'Défaite'} pour ${playerName} !`)

@@ -33,8 +33,14 @@ function getAssetFile(fileName) {
   return require(`${asset_directory}/${fileName}`);
 }
 
+function getIconPath(type, name) {
+  return `${asset_directory}/icons/${type}/${name}.png`;
+}
+
+
 module.exports = {
   getTempFile,
   writeTempFile,
   getAssetFile,
+  getIconPath,
 }

@@ -5,6 +5,7 @@ const { LeagueOfLegendsUtils } = require('../../utils');
 module.exports = {
   name: 'untrack',
   description: 'Permet de ne plus suivre les résultats d\'un joueur de League Of Legends',
+  arguments: 'player_name',
   execute(msg, args) {
     const playerToUntrack = args.join(' ');
 

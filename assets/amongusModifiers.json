@@ -1,0 +1,75 @@
+{
+    "torch": {
+        "name": {
+            "fr": "Torche",
+            "en": "Torch"
+        },
+        "appliedTo": "crewmate",
+        "description": [
+            "La vision de la Torche **n'est pas réduite** quand les lumières sont sabotées."
+        ]
+    },
+    "diseased": {
+        "name": {
+            "fr": "Malade",
+            "en": "Diseased"
+        },
+        "appliedTo": "crewmate",
+        "description": [
+            "Tuer le malade **triple le temps de recharge** du tueur."
+        ]
+    },
+    "flash": {
+        "name": {
+            "fr": "Flash",
+            "en": "Flash"
+        },
+        "appliedTo": "all",
+        "description": [
+            "Le Flash voyage à **deux fois la vitesse** d'un joueur normal."
+        ]
+    },
+    "tiebreaker": {
+        "name": {
+            "fr": "Arbitre",
+            "en": "Tiebreaker"
+        },
+        "appliedTo": "all",
+        "description": [
+            "Si **l'un des votes est nul**, le vote de l'Arbitre sera **validé**.",
+            "S'il a **voté pour un autre joueur**, il sera **éliminé**.",
+            "Si **l'Arbitre est le Maire**, cela s'applique au **premier vote** du Maire."
+        ]
+    },
+    "drunk": {
+        "name": {
+            "fr": "Ivrogne",
+            "en": "Drunk"
+        },
+        "appliedTo": "all",
+        "description": [
+            "Les **commandes** de l'Ivrogne sont **inversées**."
+        ]
+    },
+    "giant": {
+        "name": {
+            "fr": "Géant",
+            "en": "Giant"
+        },
+        "appliedTo": "all",
+        "description": [
+            "Le Géant est un **Crewmate gigantesque**, qui a une **vitesse de marche réduite**."
+        ]
+    },
+    "button_barry": {
+        "name": {
+            "fr": "Button Barry",
+            "en": "Button Barry"
+        },
+        "appliedTo": "all",
+        "description": [
+            "Button Barry a la possibilité d'**appeler une réunion de n'importe où** sur la carte, **même pendant les sabotages**.",
+            "Il a le même nombre de réunions qu'un joueur ordinaire."
+        ]
+    }
+}

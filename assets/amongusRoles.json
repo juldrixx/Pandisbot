@@ -1,0 +1,285 @@
+{
+    "mayor": {
+        "name": {
+            "fr": "Maire",
+            "en": "Mayor"
+        },
+        "team": "crewmate",
+        "description": [
+            "Le Maire est un **Crewmate** qui peut **voter plusieurs fois**.",
+            "Le Maire dispose d'une **Banque de votes**, qui correspond **nombre de fois qu'il peut voter**.",
+            "Il a la possibilité de **s'abstenir de voter pendant une réunion**, ce qui **ajoute ce vote** à la Banque de votes.",
+            "Tant que tout le monde n'a pas voté, le Maire peut utiliser **autant de voix** de sa Banque de votes qu'il le souhaite."
+        ]
+    },
+    "lovers": {
+        "name": {
+            "fr": "Amoureux",
+            "en": "Lovers"
+        },
+        "team": "crewmate",
+        "description": [
+            "Les Amoureux sont **deux joueurs** qui sont **liés entre eux**.",
+            "Ces deux joueurs sont **choisis au hasard** parmi les Crewmate et les Imposteurs.",
+            "Ils ont pour objectif principal de **rester en vie ensemble**.",
+            "S'ils sont tous les deux **parmi les 3 derniers joueurs**, ils gagnent.",
+            "Pour ce faire, ils ont **accès à un chat privé,** qu'ils ne peuvent voir **qu'entre les rencontres**.",
+            "Cependant, ils peuvent également **gagner avec leur équipe respective**, d'où la raison pour laquelle les Amoureux **ne connaissent pas le rôle de l'autre amoureux**."
+        ]
+    },
+    "sheriff": {
+        "name": {
+            "fr": "Shérif",
+            "en": "Sheriff"
+        },
+        "team": "crewmate",
+        "description": [
+            "Le Shérif est un **Crewmate** qui a la possibilité d'**éliminer les Imposteurs** en utilisant son bouton de mise à mort.",
+            "Cependant, s'il **tue un Crewmate ou un Joueur neutre** qu'il ne peut pas tuer, il **meurt lui-même**."
+        ]
+    },
+    "engineer": {
+        "name": {
+            "fr": "Ingénieur",
+            "en": "Engineer"
+        },
+        "team": "crewmate",
+        "description": [
+            "L'Ingénieur est un **Crewmate** qui peut **réparer les sabotages** de n'**importe où** sur la carte.",
+            "Il peut **utiliser les ventilations** pour traverser la carte facilement."
+        ]
+    },
+    "swapper": {
+        "name": {
+            "fr": "Échangeur",
+            "en": "Swapper"
+        },
+        "team": "crewmate",
+        "description": [
+            "L'Échangeur est un **Crewmate** qui peut **échanger les votes de 2 joueurs** pendant une réunion.",
+            "Tous les votes pour le premier joueur seront au contraire comptabilisés pour le second et vice versa."
+        ]
+    },
+    "investigator": {
+        "name": {
+            "fr": "Enquêteur",
+            "en": "Investigator"
+        },
+        "team": "crewmate",
+        "description": [
+            "L'Enquêteur est un **Crewmate** qui peut **voir les empreintes des joueurs**.",
+            "Chaque empreinte **disparaît au bout d'un certain temps**."
+        ]
+    },
+    "time_lord": {
+        "name": {
+            "fr": "Seigneur du Temps",
+            "en": "Time Lord"
+        },
+        "team": "crewmate",
+        "description": [
+            "Le Seigneur du Temps est un **Crewmate** qui peut **remonter le temps** et **inverser les positions de tous les joueurs**.",
+            "S'il est activé, **tout joueur tué pendant ce temps sera ranimé**.",
+            "Seuls les mouvements et les meurtres sont affectés.",
+            "S'il est activé, le Seigneur du Temps **ne peut pas utiliser les Vitaux** pour rendre les choses plus équilibrées."
+        ]
+    },
+    "medic": {
+        "name": {
+            "fr": "Médecin",
+            "en": "Medic"
+        },
+        "team": "crewmate",
+        "description": [
+            "Le Médecin est un **Crewmate** qui peut **donner à n'importe quel joueur un bouclier** qui le **rendra immortel jusqu'à la mort du Médecin**.",
+            "Un joueur protégé par un bouclier **ne peut pas être transféré, piraté ou tué** par qui que ce soit, sauf par suicide.",
+            "Si le Médecin signale un cadavre, il peut obtenir un **rapport contenant des indices sur l'identité du tueur**.",
+            "Un rapport peut contenir le **nom du tueur** ou le **type de couleur** (plus sombre/plus clair)"
+        ]
+    },
+    "seer": {
+        "name": {
+            "fr": "Voyant",
+            "en": "Seer"
+        },
+        "team": "crewmate",
+        "description": [
+            "Le Voyant est un **Crewmate** qui peut **révéler les rôles des autres joueurs**.",
+            "En fonction des paramètres, le Voyant peut **découvrir si un rôle est bon, mauvais ou neutre**, ou il peut **découvrir le rôle lui-même*.",
+            "Le nom d'un joueur **change de couleur** en fonction de son équipe ou de son rôle.",
+            "Si le Voyant enquête sur quelqu'un, le nom du Voyant **changera de couleur** pour **informer ce joueur de l'identité du Voyant**."
+        ]
+    },
+    "child": {
+        "name": {
+            "fr": "Enfant",
+            "en": "Child"
+        },
+        "team": "crewmate",
+        "description": [
+            "L'Enfant est un **Crewmate** qui **ne peut être tué ou éliminé par un vote**.",
+            "Si cela se produit, **tout le monde perd**."
+        ]
+    },
+    "spy": {
+        "name": {
+            "fr": "Espion",
+            "en": "Spy"
+        },
+        "team": "crewmate",
+        "description": [
+            "L'Espion est un **Crewmate** qui obtient **plus d'informations** lorsqu'il est **sur la Table d'administration et les Vitaux**.",
+            "Sur la Table d'administration, l'espion peut **voir les couleurs de chaque personne** sur la carte.",
+            "Sur les Vitaux, l'espion peut voir **depuis combien de temps les corps sont morts**."
+        ]
+    },
+    "snitch": {
+        "name": {
+            "fr": "Mouchard",
+            "en": "Snitch"
+        },
+        "team": "crewmate",
+        "description": [
+            "Le Mouchard est un **Crewmate** qui peut faire **pointer des flèches vers les imposteurs**, une fois que **toutes leurs tâches sont terminées**.",
+            "Les noms des imposteurs s'**affichent également en rouge** sur leur écran.",
+            "Selon les paramètres du jeu, le Mouchard peut **ne pas savoir qui il est** tant qu'il ne lui reste qu'une seule tâche à accomplir.",
+            "Cependant, lorsqu'il ne leur **reste plus qu'une seule tâche à accomplir**, les imposteurs reçoivent **une flèche pointant vers le Mouchard**."
+        ]
+    },
+    "altruist": {
+        "name": {
+            "fr": "Altruiste",
+            "en": "Altruist"
+        },
+        "team": "crewmate",
+        "description": [
+            "L'Altruiste est un **Crewmate** capable de **ranimer les joueurs morts**.",
+            "Lorsqu'il trouve un cadavre, l'Altruiste peut **appuyer sur son bouton de réanimation**, risquant ainsi de **se sacrifier pour la réanimation d'un autre joueur**.",
+            "Si cette option est activée, **le cadavre disparaît**, et seul **le corps de l'altruiste reste sur les lieux**.",
+            "Au bout d'un certain temps, le joueur sera ressuscité, si **la réanimation n'est pas interrompue**."
+        ]
+    },
+    "jester": {
+        "name": {
+            "fr": "Bouffon",
+            "en": "Jester"
+        },
+        "team": "neutral",
+        "description": [
+            "Le Bouffon est un **rôle neutre** avec **sa propre condition de victoire**.",
+            "S'il est **éliminé à l'issue d'une réunion**, le jeu se termine et **il gagne**.",
+            "Cependant, le bouffon ne gagne pas si les Crewmates, les Imposteurs ou un autre rôle neutre l'emportent."
+        ]
+    },
+    "shifter": {
+        "name": {
+            "fr": "Métamorphe",
+            "en": "Shifter"
+        },
+        "team": "neutral",
+        "description": [
+            "Le Métamorphe est un **rôle neutre** **sans condition de victoire**.",
+            "Il n'a aucune tâche à accomplir et est essentiellement sans rôle.",
+            "Cependant, il peut **échanger son rôle avec d'autres joueurs**.",
+            "L'échange de rôle avec un **rôle personnalisé** donne au Métamorphe **son rôle et ses tâche**s, et **transforme l'autre joueur en Crewmate**.",
+            "L'échange de rôles avec un **Crewmate** permet d'**échanger les tâches**.",
+            "L'échange de rôles avec un **Imposteur** échoue et **tue le Métamorphe**."
+        ]
+    },
+    "the_glitch": {
+        "name": {
+            "fr": "Le Glitch",
+            "en": "The Glitch"
+        },
+        "team": "neutral",
+        "description": [
+            "Le Glitch est un **rôle neutre** avec **sa propre condition de victoire**.",
+            "Le but du Glitch est de **tuer tout le monde** et d'être la **dernière personne debout**.",
+            "Le Glitch peut **pirater les joueurs**, ce qui les **empêche de signaler des corps** et **d'accomplir des tâches**.",
+            "Le piratage empêche le joueur piraté de faire autre chose que de se promener sur la carte.",
+            "Le Glitch peut **imiter quelqu'un**, ce qui fait qu'il **ressemble exactement à l'autre personne**."
+        ]
+    },
+    "executioner": {
+        "name": {
+            "fr": "Bourreau",
+            "en": "Executioner"
+        },
+        "team": "neutral",
+        "description": [
+            "Le Bourreau est un **rôle neutre** avec **sa propre condition de victoire**.",
+            "Son objectif est **d'éliminer un joueur, spécifié au début de la partie**.",
+            "Si ce joueur est éliminé, il gagne la partie."
+        ]
+    },
+    "arsonist": {
+        "name": {
+            "fr": "Pyromane",
+            "en": "Arsonist"
+        },
+        "team": "neutral",
+        "description": [
+            "Le Pyromane est un **rôle neutre** avec **sa propre condition de victoire**.",
+            "Il a la capacité d'**asperger les autres joueurs d'essence**.",
+            "**Une fois qu'il a aspergé tous les joueurs restants**, il peut les **enflammer tous en même temps**.",
+            "En enflammant tous les joueurs, il gagne la partie."
+        ]
+    },
+    "janitor": {
+        "name": {
+            "fr": "Concierge",
+            "en": "Janitor"
+        },
+        "team": "impostor",
+        "description": [
+            "Le Concierge est un **Imposteur** qui peut **nettoyer les corps**.",
+            "Ses deux capacités, **tuer et nettoyer**, ont un temps de recharge commun, ce qui signifie qu'il doit choisir laquelle il veut utiliser."
+        ]
+    },
+    "morphling": {
+        "name": {
+            "fr": "Morphling",
+            "en": "Morphling"
+        },
+        "team": "impostor",
+        "description": [
+            "Le Morphling est un **Imposteur** qui peut **se transformer en un autre joueur**.",
+            "Au début de la partie et après chaque rencontre, il peut **choisir quelqu'un comme Échantillon**.",
+            "Il peut ensuite **se transformer en cette personne à tout moment** et pour **une durée limitée**.",
+            "Pour équilibrer le rôle, il **ne peut pas utiliser les ventilations**."
+        ]
+    },
+    "camouflager": {
+        "name": {
+            "fr": "Camoufleur",
+            "en": "Camouflager"
+        },
+        "team": "impostor",
+        "description": [
+            "Le Camoufleur est un **Imposteur** qui peut **transformer tout le monde en personnages incolores**.",
+            "Tout le monde devient alors gris pendant un certain temps, et **leurs noms disparaissent**, les rendant méconnaissables."
+        ]
+    },
+    "miner": {
+        "name": {
+            "fr": "Mineur",
+            "en": "Miner"
+        },
+        "team": "impostor",
+        "description": [
+            "Le Mineur est un **Imposteur** qui peut **créer de nouvelles ventilations**.",
+            "Ces ventilations ne **se connectent qu'entre elles**, formant un nouveau passage."
+        ]
+    },
+    "swooper": {
+        "name": {
+            "fr": "Swooper",
+            "en": "Swooper"
+        },
+        "team": "impostor",
+        "description": [
+            "Le Swooper est un **Imposteur** qui peut **temporairement devenir invisible**.",
+            "Pour équilibrer le rôle, ils **ne peuvent pas utiliser les ventilations**."
+        ]
+    }
+}

@@ -5,6 +5,7 @@ const { LeagueOfLegendsUtils } = require('../../utils');
 module.exports = {
   name: 'track',
   description: 'Permet de suivre les résultats d\'un joueur de League Of Legends',
+  arguments: 'player_name',
   execute(msg, args) {
     const playerToTrack = args.join(' ');
 

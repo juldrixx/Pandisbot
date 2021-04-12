@@ -7,4 +7,5 @@ module.exports = {
   ConstantUtils: require('./Constants'),
   DiscordUtils: require('./Discord'),
   CronJobUtils: require('./cronJobs'),
+  AmongUsUtils: require('./AmongUs'),
 };

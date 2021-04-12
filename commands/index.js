@@ -7,4 +7,5 @@ module.exports = {
   Help: require('./help'),
   LeagueOfLegends: require('./LeagueOfLegends'),
   Dofus: require('./Dofus'),
+  AmongUs: require('./AmongUs'),
 };
