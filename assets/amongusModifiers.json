@@ -16,7 +16,7 @@
         },
         "appliedTo": "crewmate",
         "description": [
-            "Tuer le malade **triple le temps de recharge** du tueur."
+            "Tuer le Malade **triple le temps de recharge pour tuer** du tueur."
         ]
     },
     "flash": {
@@ -36,7 +36,7 @@
         },
         "appliedTo": "all",
         "description": [
-            "Si **l'un des votes est nul**, le vote de l'Arbitre sera **validé**.",
+            "Si **un vote est nul**, le vote de l'Arbitre sera **validé**.",
             "S'il a **voté pour un autre joueur**, il sera **éliminé**.",
             "Si **l'Arbitre est le Maire**, cela s'applique au **premier vote** du Maire."
         ]
