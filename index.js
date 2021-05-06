@@ -17,7 +17,8 @@ Object.keys(botCommands).forEach(key => {
     });
     botCommand.availableCommands = subCommands;
   }
-  bot.commands.set(`.${botCommand.name}`, botCommand);
+
+  bot.commands.set(botCommand.name, botCommand);
 });
 
 const TOKEN = process.env.TOKEN_DISCORD;
@@ -71,7 +72,7 @@ function processInput(msg, args, availableCommands, parentCommand = null) {
             args = ` <${args}>`;
           }
           return {
-            name: `${key} \`${parentCommand} ${key}${args ?? ''}\``,
+            name: `${key} \`.pdb ${parentCommand} ${key}${args ?? ''}\``,
             value: command.description,
             inline: true
           };
@@ -101,5 +102,8 @@ function processInput(msg, args, availableCommands, parentCommand = null) {
 
 
 bot.on('message', msg => {
-  return processInput(msg, msg.content.split(/ +/), bot.commands);
+  const msgSplitted = msg.content.split(/ +/);
+  if (msgSplitted.shift() !== '.pdb') return;
+  if (msgSplitted.length === 0) msgSplitted.push('help');
+  return processInput(msg, msgSplitted, bot.commands);
 });

@@ -8,4 +8,5 @@ module.exports = {
   DiscordUtils: require('./Discord'),
   CronJobUtils: require('./cronJobs'),
   AmongUsUtils: require('./AmongUs'),
+  MangaDexUtils: require('./MangaDex'),
 };

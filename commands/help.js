@@ -12,7 +12,7 @@ module.exports = {
       .addFields(
         Object.keys(botCommands).map(key => {
           return {
-            name: `\`.${botCommands[key].name}\``,
+            name: `\`.pdb ${botCommands[key].name}\``,
             value: botCommands[key].description,
             inline: true
           };

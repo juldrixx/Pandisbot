@@ -8,4 +8,5 @@ module.exports = {
   LeagueOfLegends: require('./LeagueOfLegends'),
   Dofus: require('./Dofus'),
   AmongUs: require('./AmongUs'),
+  MangaDex: require('./MangaDex'),
 };
